@@ -14,8 +14,7 @@ Due: 19 Sep @ 1:00 p.m.
 #B 
 def remove_all(el, lst):
     for i in lst:
-        if el == 1:
-            lst.remove(el)
+        lst.remove(el)
 #C
 def add_this_many(x, y, lst):
     sum = 0
