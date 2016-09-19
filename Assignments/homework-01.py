@@ -36,9 +36,6 @@ def add_this_many(x, y, lst):
 def reverse(lst):
     print(lst[::-1])
 
-x = [3, 2, 4, 5, 1] 
-reverse(x)
-
 #F
 def rotate(lst, k):
     print(l[-k:] + l[:-k])
