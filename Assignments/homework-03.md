@@ -34,7 +34,7 @@ print(Bag.number_sold)
 print(soumyas_bag.number_sold)
 # 2 
 ```
--------==
+-----
 2) Write a new method for the Bag class called take color, 
 which takes a color and removes (and returns) a Skittle of that color from the bag. If there is no Skittle of that color, then it returns None.
 
