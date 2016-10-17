@@ -47,7 +47,7 @@ def take_color(self, color):
         else:
             return None
 ```
-3. Write a new method for the Bag class called take all, which takes all the Skittles in the current bag
+3.  Write a new method for the Bag class called take all, which takes all the Skittles in the current bag
  and prints the color of the each Skittle taken from the bag.
 
 ```python 
