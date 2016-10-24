@@ -15,7 +15,7 @@ class Pet(object):
         
 class Cat(Pet):
     def __init__(self, name, owner, lives=9):
-        pet.__init__(self,name,owner,is_alive)
+        Pet.__init__(self,name,owner,is_alive)
         self.lives = lives
 
 
