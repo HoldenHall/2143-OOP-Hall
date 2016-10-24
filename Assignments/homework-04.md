@@ -1,6 +1,6 @@
 Holden Hall
 
-1. Implement the Cat class by inheriting from the Pet class. Make sure to use superclass methods wherever possible.
+1) Implement the Cat class by inheriting from the Pet class. Make sure to use superclass methods wherever possible.
 In addition, add a lose_life method to the Cat class.
 ```python 
 class Pet(object):
@@ -33,7 +33,7 @@ class Cat(Pet):
     		if self.lives == 0:
     			self.is_alive = False
 ```
-2. Assume these commands are entered in order. What would Python output?
+2) Assume these commands are entered in order. What would Python output?
 ```python
 class Foo(object):
     def __init__(self, a):
