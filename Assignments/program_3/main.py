@@ -1,3 +1,5 @@
+#Holden Hall
+#12/9/16
 import imageEdit
 from PIL import Image
 # Imports image library stuff
