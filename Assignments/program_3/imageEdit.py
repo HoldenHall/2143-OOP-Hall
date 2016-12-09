@@ -11,33 +11,40 @@ class ImageEd(object):
         
                 xnums = [x for x in range(x - distance, x + distance) if x >= 0]
                 ynums = [y for y in range(y - distance, y + distance) if y >= 0]
+                #finds a range that keeps the edge in mine
 
                 x_choice = random.choice(xnums)
                 y_choice = random.choice(ynums)
+                #random number
 
                 if x > self.width-distance:
                     break
                 if y > self.height-distance:
                     break
+                #makes sure there's no index error
+
                 rgb2 = img.getpixel((x_choice,y_choice))
                 rgb = (rgb2[0],rgb2[1],rgb[2])
                 img.putpixel((x,y),rgb2)
-        img.save(imageout)   
+                #transfers pixels from the random choice
+        img.save(imageout)
+ 
 
 
     def v_flip(self,image,imageout=None):
-        for x in range(self.height//2):
+        for x in range(self.height//2):    #width and height got mixed up when I was trying to figure flip out
             for y in range(self.width):
                 rgb = img.getpixel((y,x))
                 rgb2 = img.getpixel((y,self.height-1-x))
                 img.putpixel((y,height-1-x),rgb)
                 img.putpixel((y,x),rgb2)
-        img.save(imageout)   
+        img.save(imageout)
+ 
 
 
 
     def h_flip(self,image,imageout=None):
-        for x in range(self.height):
+        for x in range(self.height):      #width and height got mixed up when I was trying to figure flip out
             for y in range(self.width//2):
                 rgb = img.getpixel((y, x))
                 rgb2 = img.getpixel((width - 1 - y, x))
@@ -57,8 +64,9 @@ class ImageEd(object):
                     color -= m
                 else:
                     color += (snap_val - m)
+                return int(color)
 
-            return int(color)
+        #snaps the color using the given snap_val
         p1 = posterize()
         for x in range(self.width):
             for y in range(self.height):
@@ -69,6 +77,7 @@ class ImageEd(object):
 
                 rbg = ((r,g,b))
                 img.putpixel((x, y), rgb)
+                #puts snapped colors onto picture
         img.save(imageout)
     
     def blur(self,image,kernel,imageout=None):
@@ -77,6 +86,7 @@ class ImageEd(object):
                 average = c1+c2+c3+c4+c5 /5
                 return int(average)
         avg = average()
+        #averages the pixel neighbors
 
         for x in range(self.width):
             for y in range(self.height):
@@ -86,6 +96,7 @@ class ImageEd(object):
                     continue
                 if y > self.height-kernel-1 or y < (kernel-1)-self.height:
                     continue
+                #avoids index error 
                 left = img.getpixel((x-kernal,y))
                 right = img.getpixel((x+kernal,y))
                 above = img.getpixel((x,y-kernal))
@@ -93,7 +104,7 @@ class ImageEd(object):
                 r= avg.average(current[0],left[0],right[0],above[0],below[0])
                 g= avg.average(current[1],left[1],right[1],above[1],below[1])
                 b= avg.average(current[2],left[2],right[2],above[2],below[2])
-
+                #setting colors
                 rgb = ((r,g,b))
                 img.putpixel((x, y), rgb)
         img.save(imageout)
@@ -105,6 +116,7 @@ class ImageEd(object):
                 if color < intensity:
                     color = 255-color
                 return int(color)
+            #sets color using intensity function
         s1 = solarize()
         for x in range(self.width):
             for y in range(self.height):
@@ -113,11 +125,15 @@ class ImageEd(object):
                 r = s1.solar(current[0],intensity)
                 g = s1.solar(current[1],intensity)
                 b = s1.solar(current[2],intensity)
+                #setting colors
                 rgb = ((r,g,b))
                 img.putpixel((x, y), rgb)
         img.save(imageout)   
 
-        
+        #When I attempted to grayscale the image it wouldn't let me edit the pixels
+        #again so I just used the color values from the polarized picture.
+        #Used colors that went well together but, the differences aren't very
+        #distinct
     def warhol(self,image,intensity,imageout=None):
         class warhol(object):
             def color_set(self,r,b,g):
@@ -145,7 +161,8 @@ class ImageEd(object):
                     r = 255
                     g = 255
                     b = 255
-            return ((r,g,b))
+                return ((r,g,b))
+        #sets colors using a threshold
         war = warhol()
         for x in range(self.width):
             for y in range(self.height):
@@ -154,6 +171,8 @@ class ImageEd(object):
                 r = self.posterize__snap_color__(current[0],intensity)
                 g = self.posterize.__snap_color__(current[1],intensity)
                 b = self.posterize.__snap_color__(current[2],intensity)
+                #posterize 
                 rgb = war.color_set(r,g,b)
+                #than use warhol function
                 img.putpixel((x, y), rgb)
         img.save(imageout)   
