@@ -1,3 +1,4 @@
+import imageEdit
 from PIL import Image
 # Imports image library stuff
 from io import BytesIO
