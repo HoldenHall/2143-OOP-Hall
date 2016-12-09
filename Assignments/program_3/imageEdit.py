@@ -1,3 +1,6 @@
+#Holden Hall
+#12/9/16
+
 class ImageEd(object):
     def __init__(self,img):
         self.width = img.size[0]
